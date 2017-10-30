@@ -1,9 +1,9 @@
 {
   "swagger" : "2.0",
   "info" : {
-    "description" : "Matrix VNF Operations",
+    "description" : "Matrix VNF Operations test",
     "version" : "1.0.0",
-    "title" : "M A T R I X"
+    "title" : "M A T R I X demo"
   },
   "host" : "virtserver.swaggerhub.com",
   "basePath" : "/praveen1/matrix/1.0.0",
