@@ -1,0 +1,186 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Matrix VNF Operations",
+    "version" : "1.0.0",
+    "title" : "M A T R I X"
+  },
+  "host" : "virtserver.swaggerhub.com",
+  "basePath" : "/praveen1/matrix/1.0.0",
+  "schemes" : [ "https" ],
+  "paths" : {
+    "/vnfprevalidate" : {
+      "post" : {
+        "summary" : "Does the pre validation for VNF",
+        "description" : "Does the prevalidation for VNF",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "uid",
+          "in" : "query",
+          "description" : "Execution jenkins job id12",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "VNF Prevalidation status",
+            "schema" : {
+              "$ref" : "#/definitions/BuildInfo"
+            }
+          }
+        }
+      }
+    },
+    "/vnfonboard" : {
+      "put" : {
+        "summary" : "Inovke the jenkins vnf onboarding job",
+        "description" : "Inovke the jenkins vnf onboarding job",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "uid",
+          "in" : "query",
+          "description" : "Execution jenkins job id",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Onboarding status",
+            "schema" : {
+              "$ref" : "#/definitions/BaseResponse"
+            }
+          }
+        }
+      }
+    },
+    "/vnfbnboardingstatus" : {
+      "get" : {
+        "summary" : "Fetch the jenkins job status",
+        "description" : "Fetch the jenkins job status",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "uid",
+          "in" : "query",
+          "description" : "Execution jenkins job id",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "jenkins job status",
+            "schema" : {
+              "$ref" : "#/definitions/BaseResponse"
+            }
+          }
+        }
+      }
+    },
+    "/vnfconfigure" : {
+      "post" : {
+        "summary" : "Inovke the jenkins vnf configurations job",
+        "description" : "Inovke the jenkins vnf configurations job",
+        "parameters" : [ {
+          "name" : "uid",
+          "in" : "query",
+          "description" : "Execution jenkins job id",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "jenkins job status",
+            "schema" : {
+              "$ref" : "#/definitions/BaseResponse"
+            }
+          }
+        }
+      }
+    },
+    "/vnftest" : {
+      "post" : {
+        "summary" : "Inovke the jenkins vnf testing job",
+        "description" : "Inovke the jenkins vnf testing job",
+        "parameters" : [ {
+          "name" : "uid",
+          "in" : "query",
+          "description" : "Execution jenkins job id",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "jenkins job status",
+            "schema" : {
+              "$ref" : "#/definitions/BaseResponse"
+            }
+          }
+        }
+      }
+    },
+    "/vnfdeboard" : {
+      "delete" : {
+        "summary" : "Inovke the jenkins vnf deboarding job",
+        "description" : "Inovke the jenkins vnf deboarding job",
+        "parameters" : [ {
+          "name" : "uid",
+          "in" : "query",
+          "description" : "Execution jenkins job id",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "jenkins job status",
+            "schema" : {
+              "$ref" : "#/definitions/BaseResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "BaseResponse" : {
+      "type" : "object",
+      "properties" : {
+        "operationName" : {
+          "type" : "string",
+          "description" : "VNF Operation Name."
+        },
+        "result" : {
+          "type" : "string",
+          "description" : "VNF Operation result."
+        }
+      }
+    },
+    "BuildInfo" : {
+      "type" : "object",
+      "properties" : {
+        "operationName" : {
+          "type" : "string",
+          "description" : "VNF Operation Name."
+        },
+        "result" : {
+          "type" : "string",
+          "description" : "VNF Operation result."
+        },
+        "message" : {
+          "type" : "string",
+          "description" : "VNF Operation message"
+        },
+        "buildName" : {
+          "type" : "string",
+          "description" : "buildName"
+        },
+        "buildNumber" : {
+          "type" : "string",
+          "description" : "buildNumber"
+        },
+        "buildURL" : {
+          "type" : "string",
+          "description" : "buildURL"
+        }
+      }
+    }
+  }
+}
