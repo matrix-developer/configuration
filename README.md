@@ -1,4 +1,4 @@
-# configuration
+# MATRIX tools configuration files
 
 Configuration files for 
 
