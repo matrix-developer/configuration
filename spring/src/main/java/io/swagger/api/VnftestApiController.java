@@ -1,7 +1,6 @@
 package io.swagger.api;
 
 import io.swagger.model.BaseResponse;
-import io.swagger.model.BuildInfo;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.*;
 import org.slf4j.Logger;
@@ -24,21 +23,21 @@ import java.util.List;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-05-23T05:55:13.551Z")
 
 @Controller
-public class WorkflowadapterApiController implements WorkflowadapterApi {
+public class VnftestApiController implements VnftestApi {
 
-    private static final Logger log = LoggerFactory.getLogger(WorkflowadapterApiController.class);
+    private static final Logger log = LoggerFactory.getLogger(VnftestApiController.class);
 
     private final ObjectMapper objectMapper;
 
     private final HttpServletRequest request;
 
     @org.springframework.beans.factory.annotation.Autowired
-    public WorkflowadapterApiController(ObjectMapper objectMapper, HttpServletRequest request) {
+    public VnftestApiController(ObjectMapper objectMapper, HttpServletRequest request) {
         this.objectMapper = objectMapper;
         this.request = request;
     }
 
-    public ResponseEntity<BaseResponse> workflowadapterVnfonboardPut(@NotNull @ApiParam(value = "Execution jenkins job id", required = true) @Valid @RequestParam(value = "uid", required = true) String uid) {
+    public ResponseEntity<BaseResponse> vnftestPost(@ApiParam(value = "Execution jenkins job id") @Valid @RequestParam(value = "uid", required = false) String uid) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
@@ -50,20 +49,6 @@ public class WorkflowadapterApiController implements WorkflowadapterApi {
         }
 
         return new ResponseEntity<BaseResponse>(HttpStatus.NOT_IMPLEMENTED);
-    }
-
-    public ResponseEntity<BuildInfo> workflowadapterVnfprevalidatePost(@NotNull @ApiParam(value = "Execution jenkins job id12", required = true) @Valid @RequestParam(value = "uid", required = true) String uid) {
-        String accept = request.getHeader("Accept");
-        if (accept != null && accept.contains("application/json")) {
-            try {
-                return new ResponseEntity<BuildInfo>(objectMapper.readValue("{  \"result\" : \"result\",  \"buildName\" : \"buildName\",  \"buildURL\" : \"buildURL\",  \"operationName\" : \"operationName\",  \"message\" : \"message\",  \"buildNumber\" : \"buildNumber\"}", BuildInfo.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<BuildInfo>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        }
-
-        return new ResponseEntity<BuildInfo>(HttpStatus.NOT_IMPLEMENTED);
     }
 
 }

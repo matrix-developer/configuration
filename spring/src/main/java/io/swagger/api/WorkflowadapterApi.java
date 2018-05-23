@@ -5,7 +5,8 @@
  */
 package io.swagger.api;
 
-import io.swagger.model.AdapterResponse;
+import io.swagger.model.BaseResponse;
+import io.swagger.model.BuildInfo;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -21,91 +22,26 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-05-02T11:56:32.648Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-05-23T05:55:13.551Z")
 
 @Api(value = "workflowadapter", description = "the workflowadapter API")
 public interface WorkflowadapterApi {
 
-    @ApiOperation(value = "createVnf", nickname = "createVnfUsingPOST", notes = "", response = AdapterResponse.class, tags={ "work-flow-adapter-controler", })
+    @ApiOperation(value = "Inovke the jenkins vnf onboarding job", nickname = "workflowadapterVnfonboardPut", notes = "Inovke the jenkins vnf onboarding job", response = BaseResponse.class, tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = AdapterResponse.class),
-        @ApiResponse(code = 201, message = "Created"),
-        @ApiResponse(code = 401, message = "Unauthorized"),
-        @ApiResponse(code = 403, message = "Forbidden"),
-        @ApiResponse(code = 404, message = "Not Found") })
-    @RequestMapping(value = "/workflowadapter/createVnf",
-        produces = { "*/*" }, 
-        consumes = { "application/json" },
+        @ApiResponse(code = 200, message = "Onboarding status", response = BaseResponse.class) })
+    @RequestMapping(value = "/workflowadapter/vnfonboard",
+        produces = { "application/json" }, 
+        method = RequestMethod.PUT)
+    ResponseEntity<BaseResponse> workflowadapterVnfonboardPut(@NotNull @ApiParam(value = "Execution jenkins job id", required = true) @Valid @RequestParam(value = "uid", required = true) String uid);
+
+
+    @ApiOperation(value = "Does the prevalidation for VNF", nickname = "workflowadapterVnfprevalidatePost", notes = "Does the prevalidation for VNF", response = BuildInfo.class, tags={  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "VNF Prevalidation status", response = BuildInfo.class) })
+    @RequestMapping(value = "/workflowadapter/vnfprevalidate",
+        produces = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<AdapterResponse> createVnfUsingPOST(@NotNull @ApiParam(value = "UID", required = true) @Valid @RequestParam(value = "UID", required = true) String UID,@NotNull @ApiParam(value = "timeout", required = true) @Valid @RequestParam(value = "timeout", required = true) String timeout);
-
-
-    @ApiOperation(value = "deleteVnf", nickname = "deleteVnfUsingPOST", notes = "", response = AdapterResponse.class, tags={ "work-flow-adapter-controler", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = AdapterResponse.class),
-        @ApiResponse(code = 201, message = "Created"),
-        @ApiResponse(code = 401, message = "Unauthorized"),
-        @ApiResponse(code = 403, message = "Forbidden"),
-        @ApiResponse(code = 404, message = "Not Found") })
-    @RequestMapping(value = "/workflowadapter/deleteVnf",
-        produces = { "*/*" }, 
-        consumes = { "application/json" },
-        method = RequestMethod.POST)
-    ResponseEntity<AdapterResponse> deleteVnfUsingPOST(@NotNull @ApiParam(value = "UID", required = true) @Valid @RequestParam(value = "UID", required = true) String UID,@NotNull @ApiParam(value = "timeout", required = true) @Valid @RequestParam(value = "timeout", required = true) String timeout);
-
-
-    @ApiOperation(value = "executeCurrentJob", nickname = "executeCurrentJobUsingGET", notes = "", response = AdapterResponse.class, tags={ "work-flow-adapter-controler", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = AdapterResponse.class),
-        @ApiResponse(code = 401, message = "Unauthorized"),
-        @ApiResponse(code = 403, message = "Forbidden"),
-        @ApiResponse(code = 404, message = "Not Found") })
-    @RequestMapping(value = "/workflowadapter/executecurrentjob",
-        produces = { "*/*" }, 
-        consumes = { "application/json" },
-        method = RequestMethod.GET)
-    ResponseEntity<AdapterResponse> executeCurrentJobUsingGET(@NotNull @ApiParam(value = "UID", required = true) @Valid @RequestParam(value = "UID", required = true) String UID,@NotNull @ApiParam(value = "timeout", required = true) @Valid @RequestParam(value = "timeout", required = true) String timeout);
-
-
-    @ApiOperation(value = "instantiateVnf", nickname = "instantiateVnfUsingPOST", notes = "", response = AdapterResponse.class, tags={ "work-flow-adapter-controler", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = AdapterResponse.class),
-        @ApiResponse(code = 201, message = "Created"),
-        @ApiResponse(code = 401, message = "Unauthorized"),
-        @ApiResponse(code = 403, message = "Forbidden"),
-        @ApiResponse(code = 404, message = "Not Found") })
-    @RequestMapping(value = "/workflowadapter/instantiateVnf",
-        produces = { "*/*" }, 
-        consumes = { "application/json" },
-        method = RequestMethod.POST)
-    ResponseEntity<AdapterResponse> instantiateVnfUsingPOST(@NotNull @ApiParam(value = "UID", required = true) @Valid @RequestParam(value = "UID", required = true) String UID,@NotNull @ApiParam(value = "timeout", required = true) @Valid @RequestParam(value = "timeout", required = true) String timeout);
-
-
-    @ApiOperation(value = "terminateVnf", nickname = "terminateVnfUsingPOST", notes = "", response = AdapterResponse.class, tags={ "work-flow-adapter-controler", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = AdapterResponse.class),
-        @ApiResponse(code = 201, message = "Created"),
-        @ApiResponse(code = 401, message = "Unauthorized"),
-        @ApiResponse(code = 403, message = "Forbidden"),
-        @ApiResponse(code = 404, message = "Not Found") })
-    @RequestMapping(value = "/workflowadapter/terminateVnf",
-        produces = { "*/*" }, 
-        consumes = { "application/json" },
-        method = RequestMethod.POST)
-    ResponseEntity<AdapterResponse> terminateVnfUsingPOST(@NotNull @ApiParam(value = "UID", required = true) @Valid @RequestParam(value = "UID", required = true) String UID,@NotNull @ApiParam(value = "timeout", required = true) @Valid @RequestParam(value = "timeout", required = true) String timeout);
-
-
-    @ApiOperation(value = "updateVnf", nickname = "updateVnfUsingPOST", notes = "", response = AdapterResponse.class, tags={ "work-flow-adapter-controler", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = AdapterResponse.class),
-        @ApiResponse(code = 201, message = "Created"),
-        @ApiResponse(code = 401, message = "Unauthorized"),
-        @ApiResponse(code = 403, message = "Forbidden"),
-        @ApiResponse(code = 404, message = "Not Found") })
-    @RequestMapping(value = "/workflowadapter/updateVnf",
-        produces = { "*/*" }, 
-        consumes = { "application/json" },
-        method = RequestMethod.POST)
-    ResponseEntity<AdapterResponse> updateVnfUsingPOST(@NotNull @ApiParam(value = "UID", required = true) @Valid @RequestParam(value = "UID", required = true) String UID,@NotNull @ApiParam(value = "timeout", required = true) @Valid @RequestParam(value = "timeout", required = true) String timeout);
+    ResponseEntity<BuildInfo> workflowadapterVnfprevalidatePost(@NotNull @ApiParam(value = "Execution jenkins job id12", required = true) @Valid @RequestParam(value = "uid", required = true) String uid);
 
 }

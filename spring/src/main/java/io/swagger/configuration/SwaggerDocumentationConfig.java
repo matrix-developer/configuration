@@ -10,17 +10,17 @@ import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-05-02T11:56:32.648Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-05-23T05:55:13.551Z")
 
 @Configuration
 public class SwaggerDocumentationConfig {
 
     ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-            .title("CBAM CFX VNF")
-            .description("CBAM CFX VNF API Documentation")
-            .license("Apache 2.0")
-            .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0")
+            .title("matrix")
+            .description("Matrix VNF Operationss")
+            .license("")
+            .licenseUrl("http://unlicense.org")
             .termsOfServiceUrl("")
             .version("1.0.0")
             .contact(new Contact("","", ""))
